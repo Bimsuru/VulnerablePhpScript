@@ -6,4 +6,5 @@ A basic vulnerable PHP script to help developers learn how to exploit top 10 OWA
 
 1. Clone or download the repository 
 2. Change the config.php to match your database configurations
-3. Run the script on your localserver ex: http://localhot
+3. Run the script on your localserver ex: http://localhost
+4. Hack the damn script :D
