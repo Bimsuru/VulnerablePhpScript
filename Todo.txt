@@ -1,0 +1,12 @@
+#Description
+
+A simple question answer forum where users can ask and answer questions.
+
+##Specification
+
+Users can be members if they register 
+    # user will provide us with his name, email,password 
+    # change personnal informations including his password and profile picture.
+
+Users can read questions and answers posted by members 
+Members can post questions and answers 
