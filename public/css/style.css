@@ -5,11 +5,29 @@ body{
 h4{
     margin: 0px;
 }
-
+.navbar-brand{
+    font-family: 'Berkshire Swash', cursive;
+    font-size: 25px;
+    color: #C9302C;
+}
 .list-group-title{
     background-color: #F8F8F8;
 }
 
+.profile-section{
+    border: 1px solid #efefef;
+    background-color: #fff;
+    border-radius: 4px;
+    border-bottom: 1px solid #e2e2e2;
+    margin-bottom: 8px;
+    text-align: center;
+    padding: 10px;
+}
+.profile-section img{
+    width: 100px;
+    border-radius: 5px;
+    margin: 10px;
+}
 .question-section,.answer-section,.question-post{
     border: 1px solid #efefef;
     background-color: #fff;

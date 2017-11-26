@@ -15,4 +15,14 @@ class Home extends Controller{
         parent::view("single");
     }
 
+    public function login()
+    {
+        parent::view("login");
+    }
+
+    public function profile()
+    {
+        parent::view("profile");
+    }
+
 }

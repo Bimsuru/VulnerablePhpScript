@@ -19,9 +19,11 @@
 
         <div class="row">
             <div class="col-md-3">
-                <?php
-                    require_once("../app/views/template/sidebare.view.php");
-                ?>
+                <div class="profile-section">
+                    <img src="http://via.placeholder.com/300x300" alt="">
+                    <h4>Omar Chajia</h4>
+                    <p>Lorem ipsum dolor sit amet.</p>
+                </div>
             </div>
             <div class="col-md-9">
                 <form>
