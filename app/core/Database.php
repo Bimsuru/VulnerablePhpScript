@@ -41,8 +41,8 @@ class Database{
         return $this->db->query($query);
     }
 
-    public function dbExec($query)
+    public function dbPrepare($query)
     {
-        return $this->db->exec($query);
+        return $this->db->prepare($query);
     }
 }

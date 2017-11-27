@@ -10,10 +10,11 @@
     }
     #login h1 {
         color: #1fa67b;
-        font-size: 18px;
         text-align: center;
         font-weight: bold;
         padding-bottom: 20px;
+        font-family: 'Berkshire Swash', cursive !important;
+        font-size: 40px;
     }
     #login .form-group {
         margin-bottom: 25px;

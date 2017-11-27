@@ -7,7 +7,9 @@ class App{
     protected $params = [];
 
     public function __construct()
-    {
+    {       
+        $this->startSession();
+
         $url = $this->parseUrl();
 
         if(file_exists("../app/controllers/".$url[0].".php"))
@@ -41,6 +43,11 @@ class App{
         }
 
         return null;
+    }
+
+    public function startSession()
+    {
+        session_start();
     }
 
 }

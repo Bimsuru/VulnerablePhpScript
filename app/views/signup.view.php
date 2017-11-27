@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Qanswer login</title>
+    <title>Qanswer Signup</title>
     <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash" rel="stylesheet">
     <link rel="stylesheet" href="/phpscript/public/css/bootstrap.min.css">
     <link rel="stylesheet" href="/phpscript/public/css/login.css">
@@ -32,7 +32,12 @@
                             </div>
                         <?php endif; ?>
 
-                        <form role="form" action="/phpscript/public/home/login" method="post" id="login-form" autocomplete="off">
+                        <form role="form" action="/phpscript/public/home/signup" method="post" id="login-form" autocomplete="off">
+                            <div class="form-group">
+                                <label for="full-name" class="sr-only">FUll Name</label>
+                                <input type="text" required  name="fullname" id="full-name" class="form-control" placeholder="Full Name">
+                            </div>
+
                             <div class="form-group">
                                 <label for="email" class="sr-only">Email</label>
                                 <input type="email" required  name="email" id="email" class="form-control" placeholder="somebody@example.com">
@@ -41,11 +46,11 @@
                                 <label for="key" class="sr-only">Password</label>
                                 <input type="password" required name="key" id="key" class="form-control" placeholder="Password">
                             </div>
-                            <input type="submit" id="btn-login" name="login" class="btn btn-custom btn-lg btn-block" value="Log in">
+                            <input type="submit" id="btn-login" name="signup" class="btn btn-custom btn-lg btn-block" value="Signup">
                         </form>
                        <hr>
                        <p style="text-align:center">
-                           <a href="/phpscript/public/home/signup">Create your account</a>
+                           <a href="/phpscript/public/home/login">Login to your account</a>
                        </p>
                     </div>
                 </div>
