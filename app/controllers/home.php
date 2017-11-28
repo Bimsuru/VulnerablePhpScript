@@ -6,12 +6,29 @@ class Home extends Controller{
         
         if(!isset($_SESSION["user"]))
         {
-            Helpers::redirectTo("phpscript/public/home/login");
+            Helpers::redirectTo("home/login");
         }
         
+        if(isset($_POST['question']) && isset($_POST['category']))
+        {
+
+            $db = Database::getInstance();
+            $req = $db->dbPrepare("INSERT INTO questions VALUES('','".$_POST['question']."','".$_POST['category']."',NOW(),'". $_SESSION["user"]->getId() ."')");
+            $req->execute();
+
+            Helpers::redirectTo("home/index");
+
+        }
+
         $db = Database::getInstance();
 
-        parent::view("index");
+        $catyResponse = $db->dbQuery("SELECT * FROM category");
+        
+        $categories = Helpers::cursorToArray($catyResponse);
+
+        $quesResponse = $db->dbQuery("SELECT u.name,q.contenu,c.category FROM questions q JOIN users u ON u.id = q.user_id JOIN category c ON q.categorie_id = c.id");
+
+        parent::view("index",["categories"=>$categories,"questions"=>$quesResponse]);
 
     }
 
@@ -20,17 +37,24 @@ class Home extends Controller{
 
         if(!isset($_SESSION["user"]))
         {
-            Helpers::redirectTo("phpscript/public/home/login");
+            Helpers::redirectTo("home/login");
         }
         
-        parent::view("single");
+
+        $db = Database::getInstance();
+        
+        $catyResponse = $db->dbQuery("SELECT * FROM category");
+        
+        $categories = Helpers::cursorToArray($catyResponse);
+
+        parent::view("single",["categories"=>$categories]);
     }
 
     public function login()
     {   
         if(isset($_SESSION["user"]))
         {
-            Helpers::redirectTo("phpscript/public/home");
+            Helpers::redirectTo("home");
         }
 
         if(isset($_POST["email"]) && isset($_POST["key"]))
@@ -44,12 +68,13 @@ class Home extends Controller{
                 $user = new User();
 
                 $user->setFullName($data["name"]);
+                $user->setId($data["id"]);
                 $user->setEmail($data["email"]);
                 $user->setAbout($date["about"]);
 
                 $_SESSION["user"] =  $user;
 
-                Helpers::redirectTo("phpscript/public/home");
+                Helpers::redirectTo("home");
 
                 die();
             }
@@ -65,7 +90,7 @@ class Home extends Controller{
     {
         if(isset($_SESSION["user"]))
         {
-            Helpers::redirectTo("phpscript/public/home");
+            Helpers::redirectTo("home");
         }
 
         if(isset($_POST["email"]) && isset($_POST["key"]) && isset($_POST["fullname"]))
@@ -77,12 +102,13 @@ class Home extends Controller{
                 $req->execute();
                 
                 $user = new User();
+                $user->setId($db->lastInsertId());
                 $user->setFullName($_POST["fullname"]);
                 $user->setEmail($_POST["email"]);
 
                 $_SESSION["user"] =  $user;
 
-                Helpers::redirectTo("phpscript/public/home");
+                Helpers::redirectTo("home");
        
             }
         }
@@ -92,15 +118,17 @@ class Home extends Controller{
 
     public function profile()
     {
+       echo  Helpers::relativeCwd();
+
+       die();
+
         parent::view("profile");
     }
 
     public function logout()
     {
         session_destroy();
-
-        Helpers::redirectTo("phpscript/public/login");
-
+        Helpers::redirectTo("login");
     }
 
 }

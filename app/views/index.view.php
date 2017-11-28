@@ -24,7 +24,7 @@
                 ?>
             </div>
             <div class="col-md-9">
-                <form>
+                <form method="post" action="/phpscript/public/Home/index" >
                     <div class="question-post">
                             <textarea name="question" placeholder="What is the best way to learn C?"></textarea>
                             <div class="question-action">
@@ -33,7 +33,9 @@
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="glyphicon glyphicon-flag"></i></span>
                                             <select style="width:200px;" class="form-control" name="category">
-                                                <option>Computer Science</option>
+                                                <?php  foreach ($data["categories"] as $key => $value): ?>
+                                                      <option value="<?= $value["id"] ?>"><?= $value["category"] ?></option>
+                                                <?php endforeach; ?>
                                             </select>
                                         </div>
                                     </div>
@@ -44,10 +46,12 @@
                             </div>
                     </div>
                 </form>
+                <?php while($dd = $data["questions"]->fetch()):  ?>
                 <div class="question-section">
-                    <h4> <a href="/phpscript/public/Home/single">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, unde.</a></h4>
-                    <span class="question-info" >Question added by <a href="#" >opmarq</a> in <a href="#" >computer science</a></span>
+                    <h4> <a href="/phpscript/public/Home/single"><?= $dd["contenu"] ?> ?</a></h4>
+                    <span class="question-info" >Question added by <a href="#" ><?= $dd["name"] ?></a> in <a href="#" ><?= $dd["category"] ?></a></span>
                 </div> 
+                <?php endwhile; $data["questions"]->closeCursor(); ?>
             </div>
         </div>
 

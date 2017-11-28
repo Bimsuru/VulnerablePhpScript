@@ -21,22 +21,20 @@
             <div class="col-md-3">
                 <div class="profile-section">
                     <img src="http://via.placeholder.com/300x300" alt="">
-                    <h4>Omar Chajia</h4>
+                    <h4><?= $_SESSION['user']->getFullName() ?></h4>
                     <p>Lorem ipsum dolor sit amet.</p>
                 </div>
             </div>
             <div class="col-md-9">
                 <form>
                     <div class="question-post">
-                            <textarea name="question" placeholder="What is the best way to learn C?"></textarea>
+                            <textarea name="question" required placeholder="What is the best way to learn C?"></textarea>
                             <div class="question-action">
                                 <div class="row">
                                     <div class="col-xs-8">
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="glyphicon glyphicon-flag"></i></span>
-                                            <select style="width:200px;" class="form-control" name="category">
-                                                <option>Computer Science</option>
-                                            </select>
+                                            <input required style="width:200px;" type="text" class="form-control" name="category">                                            
                                         </div>
                                     </div>
                                     <div class="col-xs-4">

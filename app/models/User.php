@@ -1,11 +1,22 @@
 <?php
 
 class User
-{
+{   
+    private $id;
     private $fullname;
     private $email;
     private $password;
     private $about;
+
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
 
     public function getFullName()
     {

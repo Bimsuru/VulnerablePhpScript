@@ -7,7 +7,7 @@ class Database{
     private $user = "root";
     private $password = "";
 
-    private $db;
+    public $db;
 
     private static $instance;
 
@@ -44,5 +44,10 @@ class Database{
     public function dbPrepare($query)
     {
         return $this->db->prepare($query);
+    }
+
+    public function lastInsertId()
+    {
+        return $this->db->lastInsertId();
     }
 }
