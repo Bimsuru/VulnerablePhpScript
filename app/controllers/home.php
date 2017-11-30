@@ -26,13 +26,13 @@ class Home extends Controller{
         
         $categories = Helpers::cursorToArray($catyResponse);
 
-        $quesResponse = $db->dbQuery("SELECT u.name,q.contenu,c.category FROM questions q JOIN users u ON u.id = q.user_id JOIN category c ON q.categorie_id = c.id");
+        $quesResponse = $db->dbQuery("SELECT q.id,u.name,q.contenu,c.category FROM questions q JOIN users u ON u.id = q.user_id JOIN category c ON q.categorie_id = c.id");
 
         parent::view("index",["categories"=>$categories,"questions"=>$quesResponse]);
 
     }
 
-    public function single()
+    public function single($id)
     {
 
         if(!isset($_SESSION["user"]))
@@ -40,14 +40,18 @@ class Home extends Controller{
             Helpers::redirectTo("home/login");
         }
         
-
-        $db = Database::getInstance();
         
+        $db = Database::getInstance();
+
+        $quesResponse = $db->dbQuery("SELECT q.id,u.name,q.contenu,c.category FROM questions q JOIN users u ON u.id = q.user_id JOIN category c ON q.categorie_id = c.id WHERE q.id = '".$id."'");
+        
+        $question = Helpers::cursorToArray($quesResponse);
+
         $catyResponse = $db->dbQuery("SELECT * FROM category");
         
         $categories = Helpers::cursorToArray($catyResponse);
 
-        parent::view("single",["categories"=>$categories]);
+        parent::view("single",["categories"=>$categories,"question"=>$question[0]]);
     }
 
     public function login()
@@ -111,6 +115,8 @@ class Home extends Controller{
                 Helpers::redirectTo("home");
        
             }
+
+            $_SESSION["login_error"] = "Login informations are not correct !";
         }
 
         parent::view("signup");
@@ -118,10 +124,6 @@ class Home extends Controller{
 
     public function profile()
     {
-       echo  Helpers::relativeCwd();
-
-       die();
-
         parent::view("profile");
     }
 

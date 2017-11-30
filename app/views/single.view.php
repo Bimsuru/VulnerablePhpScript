@@ -25,8 +25,8 @@
             </div>
             <div class="col-md-9">
                 <div class="question-section">
-                    <h4> <a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, unde.</a></h4>
-                    <span class="question-info" >Question added by <a href="#" >opmarq</a> in <a href="#" >computer science</a></span>
+                    <h4><?=  $data["question"]["contenu"] ?>?</h4>
+                    <span class="question-info" >Question added by <a href="#" ><?=  $data["question"]["name"] ?></a> in <a href="#" ><?=  $data["question"]["category"] ?></a></span>
                 </div>
                 <form>
                     <div class="question-post">

@@ -48,7 +48,7 @@
                 </form>
                 <?php while($dd = $data["questions"]->fetch()):  ?>
                 <div class="question-section">
-                    <h4> <a href="/phpscript/public/Home/single"><?= $dd["contenu"] ?> ?</a></h4>
+                    <h4> <a href="/phpscript/public/Home/single/<?= $dd["id"] ?>"><?= $dd["contenu"] ?> ?</a></h4>
                     <span class="question-info" >Question added by <a href="#" ><?= $dd["name"] ?></a> in <a href="#" ><?= $dd["category"] ?></a></span>
                 </div> 
                 <?php endwhile; $data["questions"]->closeCursor(); ?>

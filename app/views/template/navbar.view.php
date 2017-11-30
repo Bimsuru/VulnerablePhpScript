@@ -5,7 +5,7 @@
                     <a class="navbar-brand" href="/phpscript/public/home/index">QAnswer</a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="index">Home</a></li>
+                    <li class="active"><a href="/phpscript/public/home/index">Home</a></li>
                 </ul>
                 
                 <div class="pull-right">
